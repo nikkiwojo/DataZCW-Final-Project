@@ -104,3 +104,4 @@ def sour(flavor):
         beerList = pd.DataFrame(bigData[bigData['style'].isin(earthy)])
 
     return beerList.sample(n=5)
+    

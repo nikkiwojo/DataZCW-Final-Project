@@ -15,7 +15,7 @@ def loadData(url):
 
 
 # Load in the brewery specific data and filter out unneccessary information
-def breweryLocation(url, city, state):
+def breweryLocation(city, state):
     city = city.lower()
     rawData = loadData('https://api.openbrewerydb.org/breweries?by_city=' + city)
     dropColumns = rawData.drop(columns=['obdb_id', 'address_2', 'address_3', 'county_province','country', 'longitude', 'latitude', 'updated_at', 'created_at'])
