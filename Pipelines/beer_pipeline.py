@@ -9,8 +9,8 @@ def loadData(file):
 
 
 # Separating the data into flavor profiles, and creating smaller subsets per flavor subset
-def crisp(file, flavor):
-    bigData = loadData(file)
+def crisp(flavor):
+    bigData = loadData('beers.csv')
     fruit = ('Cream Ale', 'American Blonde Ale', 'Shandy', 'Czech Pilsener', 'American Pilsner', 'German Pilsener', 'American India Pale Lager', 'Kolsch', 'Wheat Ale','Cider', 'Grissette')
     malt = ('Marzen / Oktoberfest', 'American Adjunct Lager', 'Light Lager', 'Maibock / Helles Bock', 'Munich Dunkel Lager', 'Dortmunder / Export Lager', 'Altbier', 'Vienna Lager', 'Munich Helles Lager', 'Bock','Doppelbock','Old Ale','American Amber / Red Lager', 'Radler', 'American Amber / Red Ale')
     hop = ('Keller Bier / Zwickel Bier','Euro Pale Lager','American India Pale Lager', 'American Double / Imperial Pilsener', 'American Pale Lager')
@@ -25,8 +25,8 @@ def crisp(file, flavor):
     return beerList.sample(n=5)
 
 
-def hoppy(file, flavor):
-    bigData = loadData(file)
+def hoppy(flavor):
+    bigData = loadData('beers.csv')
     earth = ('English Bitter', 'American Double / Imperial IPA', 'Belgian IPA','English Pale Ale', 'American IPA', 'American White IPA','Belgian Strong Pale Ale', 'Belgian Pale Ale', 'English India Pale Ale (IPA)')
     malt = ('Braggot', 'Mead', 'California Common / Steam Beer', "American Amber / Red Lager", 'American Barleywine')
 
@@ -38,8 +38,8 @@ def hoppy(file, flavor):
     return beerList.sample(n=5)
 
 
-def malty(file, flavor):
-    bigData = loadData(file)
+def malty(flavor):
+    bigData = loadData('beers.csv')
     toasty = ('Euro Dark Lager','English Brown Ale')
     fruity = ('Biere de Garde', 'Scotch Ale / Wee Heavy', 'Scottish Ale', 'English Barleywine','Irish Red Ale', 'Tripel', 'Extra Special / Strong Bitter (ESB)')
 
@@ -51,8 +51,8 @@ def malty(file, flavor):
     return beerList.sample(n=5)
 
 
-def dark(file, flavor):
-    bigData = loadData(file)
+def dark(flavor):
+    bigData = loadData('beers.csv')
     soft = ('Milk / Sweet Stout', 'Foreign / Export Stout', 'Schwarzbier', 'Baltic Porter', 'Oatmeal Stout', 'American Porter', 'American Pale Ale (APA)', 'American Brown Ale', ' English Stout','Winter Warmer', 'Dubbel')
     dry = ('American Black Ale', 'American Stout', 'Russian Imperial Stout', 'American Double / Imperial Stout', 'Irish Dry Stout', 'American Double / Imperial Stout')
 
@@ -64,8 +64,8 @@ def dark(file, flavor):
     return beerList.sample(n=5)
 
 
-def smoke(file, flavor):
-    bigData = loadData(file)
+def smoke(flavor):
+    bigData = loadData('beers.csv')
     smolder = tuple('Smoked Beer')
     meaty = tuple('Rauchbier')
 
@@ -77,8 +77,8 @@ def smoke(file, flavor):
     return beerList.sample(n=5)
 
 
-def fruit(file, flavor):
-    bigData = loadData(file)
+def fruit(flavor):
+    bigData = loadData('beers.csv')
     bright = ('Saison / Farmhouse Ale', 'Roggenbier', 'Hefeweizen','American Pale Wheat Ale','Herbed / Spiced Beer', 'English Pale Mild Ale',  'Kristalweizen', 'Witbier','Pumpkin Ale', 'Belgian Blonde Ale', 'Tripel')
     dark = ('Quadrupel (Quad)', 'Dunkelweizen', 'American Dark Wheat Ale', 'Rye Beer', 'Belgian Strong Dark Ale','English Dark Mild Ale', 'Dubbel')
 
@@ -90,8 +90,8 @@ def fruit(file, flavor):
     return beerList.sample(n=5)
 
 
-def sour(file,flavor):
-    bigData = loadData(file)
+def sour(flavor):
+    bigData = loadData('beers.csv')
     delicate = ('Gose','Berliner Weissbier')
     fruity = ('Flanders Red Ale','Flanders Oud Bruin','Fruit / Vegetable Beer')
     earthy = tuple('American Wild Ale')
