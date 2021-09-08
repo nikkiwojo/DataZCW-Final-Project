@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
-from homePages import beerPage
+from homePages import beerPage, homePage
+import time
 
 
 # Create the connection/ cursor
@@ -36,12 +37,34 @@ def crisp():
     print("1) Clean/Delicate Fruit \n2) Malt-Accented \n3) Brisk Hop")
 
     choice = input('')
-    if choice == 'b':
+    if choice == '1':
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(fruit)))
+        fruitList = cur.execute(sql, fruit).fetchall()
+        recs = pd.DataFrame.from_records(data=fruitList, columns=['Name','Style','ABV'])
+        print("\033[0;33;49mTry one of these!:")
+        print(recs) 
+        time.sleep(3)
+        crisp()
+    elif choice == '2':
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(malt)))
+        maltList = cur.execute(sql, malt).fetchall()
+        recs = pd.DataFrame.from_records(data=maltList, columns=['Name','Style','ABV'])
+        print("\033[0;33;49mTry one of these!:")
+        print(recs) 
+        time.sleep(3)
+        crisp()
+    elif choice == '3':
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(hop)))
+        hopList = cur.execute(sql, hop).fetchall()
+        recs = pd.DataFrame.from_records(data=hopList, columns=['Name','Style','ABV'])
+        print("\033[0;33;49mTry one of these!:")
+        print(recs) 
+        time.sleep(3)
+        crisp()
+    elif choice == 'b':
         beerPage()
-    elif choice == '1':
-       beerList = cur.execute('''SELECT * FROM beerTable ORDER BY RANDOM() LIMIT 5''').fetchall()
+        
        
-    
     
 
 crisp()
