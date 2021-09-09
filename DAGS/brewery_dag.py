@@ -32,12 +32,12 @@ with DAG (
     )
 
     t3 = PythonOperator(
-        task_id='brewery_locator'
+        task_id='brewery_locator',
         python_callable=brewLocator
     )
 
     t4 = PythonOperator(
-        task_id='select_another'
+        task_id='select_another',
         python_callable=selection
     )
 

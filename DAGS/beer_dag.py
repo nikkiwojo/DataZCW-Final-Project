@@ -62,7 +62,7 @@ with DAG (
     )
 
     t9 = PythonOperator(
-        task_id='graph'
+        task_id='graph',
         python_callable=graph
     )
 

@@ -1,25 +1,9 @@
 # DataZCW-Final-Project
 capstone project for ZCW Data's course.
 
-## Final Group Project Possibles
+## Overview of Final Project - Nikki's Brewery
 
-- How To Build a Neural Network to Recognize Handwritten Digits with TensorFlow
-  - ye olde scanning chestnut
-  - handwriting recognition
-- Image Processing for Feature Identification
-  - "Hot dog or not" but for X
-- Sentiment Analysis
-  - From twitter feeds
-  - From facebook feeds
-  - Or?
-  - provides realtime view of crowdsourced "zeitgeist" on a hot topic
-- Recommendation Engine
-  - Music, Books, Wine, TV/Movies, Sports
-  - if you like X, you'll like Y
-- Search Engine of Documents, DataSets, APIs?? (Map/reduce)
-  - Google lite
-  - Google images
-  - popularity or relevance measures
+- 
 
 ## Group Size
 
