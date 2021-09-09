@@ -41,10 +41,15 @@ def loadData(url):
 def organizeData(city, state):
     city = city.lower()
     rawData = loadData('https://api.openbrewerydb.org/breweries?by_city=' + city)
-    dropColumns = rawData.drop(columns=['id','obdb_id', 'address_2', 'address_3', 'county_province','country', 'longitude', 'latitude', 'updated_at', 'created_at'])
-    byState = dropColumns[dropColumns['state'] == state]
-    noRepeats = byState.drop_duplicates(subset=['street'])
-    return noRepeats
+    if rawData.empty:
+        print("That place doesn't exist!")
+        time.sleep(1)
+        selection()
+    else:
+        dropColumns = rawData.drop(columns=['id','obdb_id', 'address_2', 'address_3', 'county_province','country', 'longitude', 'latitude', 'updated_at', 'created_at'])
+        byState = dropColumns[dropColumns['state'] == state]
+        noRepeats = byState.drop_duplicates(subset=['street'])
+        return noRepeats
     
     
 def brewLocator(city, state):
@@ -58,7 +63,6 @@ def brewLocator(city, state):
     print("\033[0;33;49mBreweries Near You:")
     print(locations) 
     time.sleep(1)
-
     selection()
     
  

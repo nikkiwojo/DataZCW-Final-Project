@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 import time
+import matplotlib.pyplot as plt 
 
 
 # Create the connection/ cursor
@@ -20,6 +21,9 @@ def beerDatabase():
     return beerTable
     
 
+# Each of the following functions will filter through the specific styles of beers and return a table of 5 random beers
+# Organized flavor profiles by styles of beers, search through the list and only select styles from that list for final table
+# Also finds the average abv value for each whole set of data; included to run graph function at the end
 def crisp():
     from homePages import beerPage
     beerTable = beerDatabase()
@@ -35,14 +39,17 @@ def crisp():
     print("\033[0;36;49mWhat are you in the mood for?")
     print("1) Clean/Delicate Fruit \n2) Malt-Accented \n3) Brisk Hop")
 
+
     choice = input('')
     if choice == '1':
         sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(fruit)))
         fruitList = cur.execute(sql, fruit).fetchall()
         recs = pd.DataFrame.from_records(data=fruitList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
-        print(recs) 
-        time.sleep(3)
+        print(recs)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         crisp()
     elif choice == '2':
         sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(malt)))
@@ -50,7 +57,9 @@ def crisp():
         recs = pd.DataFrame.from_records(data=maltList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         crisp()
     elif choice == '3':
         sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(hop)))
@@ -58,10 +67,16 @@ def crisp():
         recs = pd.DataFrame.from_records(data=hopList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         crisp()
     elif choice == 'b':
         beerPage()
+    else:
+        print("Invalid input. Please try again.")
+        time.sleep(1)
+        crisp()
 
 def hoppy():
     from homePages import beerPage
@@ -84,7 +99,9 @@ def hoppy():
         recs = pd.DataFrame.from_records(data=earthList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         hoppy()
     elif choice == '2':
         sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(malt)))
@@ -92,10 +109,16 @@ def hoppy():
         recs = pd.DataFrame.from_records(data=maltList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         hoppy()
     elif choice == 'b':
         beerPage()
+    else:
+        print("Invalid input. Please try again.")
+        time.sleep(1)
+        hoppy()
 
 
 def malty():
@@ -118,8 +141,9 @@ def malty():
         toastList = cur.execute(sql, toasty).fetchall()
         recs = pd.DataFrame.from_records(data=toastList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
-        print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         malty()
     elif choice == '2':
         sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(fruity)))
@@ -127,10 +151,16 @@ def malty():
         recs = pd.DataFrame.from_records(data=fruitList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         malty()
     elif choice == 'b':
         beerPage()
+    else:
+        print("Invalid input. Please try again.")
+        time.sleep(1)
+        malty()
 
 
 def dark():
@@ -154,7 +184,9 @@ def dark():
         recs = pd.DataFrame.from_records(data=softList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         dark()
     elif choice == '2':
         sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(dry)))
@@ -162,45 +194,47 @@ def dark():
         recs = pd.DataFrame.from_records(data=dryList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         dark()
     elif choice == 'b':
         beerPage()
+    else:
+        print("Invalid input. Please try again.")
+        time.sleep(1)
+        malty()
 
 
 def smoke():
     from homePages import beerPage
     beerTable = beerDatabase()
 
-    smolder = tuple('Smoked Beer')
-    meaty = tuple('Rauchbier')
+    smokey = ('Smoked Beer','Rauchbier')
 
     print("\033[1;35;49m---------------------")
     print("--- \U0001F37A \033[1;37;49m Smokey \U0001F37A \033[1;35;49m---")
     print("---------------------")
     print("\033[0;32;49mClick 'b' to choose a different flavor profile")
-    print("\033[0;36;49mWhat are you in the mood for?")
-    print("1) Subdued Smolder \n2) Spicy & Meaty")
+    print("\033[0;36;49mClick 1 to see your smokey choices")
 
     choice = input('')
-    if choice == '1':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(smolder)))
-        smolderList = cur.execute(sql, smolder).fetchall()
-        recs = pd.DataFrame.from_records(data=smolderList, columns=['Name','Style','ABV'])
-        print("\033[0;33;49mTry one of these!:")
-        print(recs) 
-        time.sleep(3)
-        smoke()
-    elif choice == '2':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(meaty)))
-        dryList = cur.execute(sql, meaty).fetchall()
+    if choice == 'b':
+        beerPage()
+    elif choice == '1':
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(smokey)))
+        meatyList = cur.execute(sql, smokey).fetchall()
         recs = pd.DataFrame.from_records(data=meatyList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         smoke()
-    elif choice == 'b':
-        beerPage()
+    else:
+        print("Invalid input. Please try again.")
+        time.sleep(1)
+        smoke()
 
 
 def fruity():
@@ -224,7 +258,9 @@ def fruity():
         recs = pd.DataFrame.from_records(data=brightList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         fruity()
     elif choice == '2':
         sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(dark)))
@@ -232,10 +268,16 @@ def fruity():
         recs = pd.DataFrame.from_records(data=darkList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         fruity()
     elif choice == 'b':
         beerPage()
+    else:
+        print("Invalid input. Please try again.")
+        time.sleep(1)
+        fruity()
 
 
 def sour():
@@ -244,14 +286,13 @@ def sour():
 
     delicate = ('Gose','Berliner Weissbier')
     fruity = ('Flanders Red Ale','Flanders Oud Bruin','Fruit / Vegetable Beer')
-    earthy = tuple('American Wild Ale')
 
     print("\033[1;35;49m----------------------------------")
     print("--- \U0001F37A \033[1;37;49m Sour, Tart, & Funky \U0001F37A \033[1;35;49m---")
     print("----------------------------------")
     print("\033[0;32;49mClick 'b' to choose a different flavor profile")
     print("\033[0;36;49mWhat are you in the mood for?")
-    print("1) Delicate \n2) Fruity & Vinous \n3) Earthy")
+    print("1) Delicate \n2) Fruity & Vinous")
 
     choice = input('')
     if choice == '1':
@@ -260,7 +301,9 @@ def sour():
         recs = pd.DataFrame.from_records(data=delicateList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         sour()
     elif choice == '2':
         sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(fruity)))
@@ -268,15 +311,26 @@ def sour():
         recs = pd.DataFrame.from_records(data=fruityList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
         print(recs) 
-        time.sleep(3)
-        sour()
-    elif choice == '3':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(earthy)))
-        earthyList = cur.execute(sql, earthy).fetchall()
-        recs = pd.DataFrame.from_records(data=earthyList, columns=['Name','Style','ABV'])
-        print("\033[0;33;49mTry one of these!:")
-        print(recs) 
-        time.sleep(3)
+        time.sleep(2) 
+        graph(recs['Name'],recs['ABV'])
+        time.sleep(2)
         sour()
     elif choice == 'b':
         beerPage()
+    else:
+        print("Invalid input. Please try again.")
+        time.sleep(1)
+        sour()
+
+
+# Creates a bar graph that compares the abv values of the 5 beers selected
+def graph(x, y):
+    x = list(x)
+    y = list(y)
+
+    plt.bar(x, y, color='maroon',width=0.5)
+    plt.xlabel('Beers')
+    plt.ylabel('ABV')
+    plt.title('Comparison of Alcohol by Volume')
+    plt.xticks(rotation=90)
+    plt.show()
