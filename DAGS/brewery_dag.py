@@ -2,8 +2,7 @@ from datetime import timedelta
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
-from brewery_pipeline import loadData
-from brewery_pipeline import breweryLocation
+from brewDatabase import *
 
 default_args = {
     'owner': 'Nikki',
@@ -13,7 +12,7 @@ default_args = {
 }
 
 with DAG (
-    'brewery_pipeline',
+    'brewDatabase',
     default_args=default_args,
     description='brewery_pipeline',
     schedule_interval=timedelta(days=7),
@@ -23,14 +22,24 @@ with DAG (
     # first task, load in the data
     t1 = PythonOperator(
         task_id='load_data',
-        python_callable=loadData('https://api.openbrewerydb.org/breweries')
+        python_callable=loadData
     )
 
     # second task, organize data by given city, state
     t2 = PythonOperator(
-        task_id='by_city_state',
-        python_callable=breweryLocation('Newark', 'Delaware')
+        task_id='organize_data',
+        python_callable=organizeData
+    )
+
+    t3 = PythonOperator(
+        task_id='brewery_locator'
+        python_callable=brewLocator
+    )
+
+    t4 = PythonOperator(
+        task_id='select_another'
+        python_callable=selection
     )
 
     # set the dependencies
-    t1 >> t2
+    t1 >> t2 >> t3 >> t4

@@ -24,7 +24,7 @@ def beerDatabase():
 
 # Each of the following functions will filter through the specific styles of beers and return a table of 5 random beers
 # Organized flavor profiles by styles of beers, search through the list and only select styles from that list for final table
-# Also finds the average abv value for each whole set of data; included to run graph function at the end
+# Also creats a bar graph for the abv values of the five selected beers
 def crisp():
     from homePages import beerPage
     beerTable = beerDatabase()
