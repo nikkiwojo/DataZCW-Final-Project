@@ -1,5 +1,6 @@
 import time
-
+from beerDatabase import *
+from brewDatabase import *
 
 def homePage():
     print("\033[1;35;49m-----------------------------------------")
@@ -31,6 +32,24 @@ def beerPage():
     flavor = input('')
     if flavor == 'x':
         homePage()
+    elif flavor == '1':
+        crisp()
+    elif flavor == '2':
+        hoppy()
+    elif flavor == '3':
+        malty()
+    elif flavor == '4':
+        dark()
+    elif flavor == '5':
+        smoke()
+    elif flavor == '6':
+        fruity()
+    elif flavor == '7':
+        sour()
+    else: 
+        print("Invalid input. Please try again.")
+        time.sleep(1)
+        beerPage()
 
 
 def breweryPage():
@@ -48,3 +67,4 @@ def breweryPage():
         state = input('')
         print("Searching for breweries in " + city + ", " + state + "...")
         time.sleep(2)
+        brewLocator(city,state)

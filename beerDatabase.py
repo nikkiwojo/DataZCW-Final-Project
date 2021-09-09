@@ -1,6 +1,5 @@
 import sqlite3
 import pandas as pd
-from homePages import beerPage, homePage
 import time
 
 
@@ -22,6 +21,7 @@ def beerDatabase():
     
 
 def crisp():
+    from homePages import beerPage
     beerTable = beerDatabase()
 
     fruit = ('Cream Ale', 'American Blonde Ale', 'Shandy', 'Czech Pilsener', 'American Pilsner', 'German Pilsener', 'American India Pale Lager', 'Kolsch', 'Wheat Ale','Cider', 'Grissette')
@@ -63,16 +63,16 @@ def crisp():
     elif choice == 'b':
         beerPage()
 
-
 def hoppy():
+    from homePages import beerPage
     beerTable = beerDatabase()
 
     earth = ('English Bitter', 'American Double / Imperial IPA', 'Belgian IPA','English Pale Ale', 'American IPA', 'American White IPA','Belgian Strong Pale Ale', 'Belgian Pale Ale', 'English India Pale Ale (IPA)')
     malt = ('Braggot', 'Mead', 'California Common / Steam Beer', "American Amber / Red Lager", 'American Barleywine')
 
-    print("\033[1;35;49m----------------------------")
+    print("\033[1;35;49m-----------------------------")
     print("--- \U0001F37A \033[1;37;49m Hoppy & Bitter \U0001F37A \033[1;35;49m---")
-    print("----------------------------")
+    print("-----------------------------")
     print("\033[0;32;49mClick 'b' to choose a different flavor profile")
     print("\033[0;36;49mWhat are you in the mood for?")
     print("1) Earthy & Dry \n2) Malt-Forward")
@@ -99,6 +99,7 @@ def hoppy():
 
 
 def malty():
+    from homePages import beerPage
     beerTable = beerDatabase()
 
     toasty = ('Euro Dark Lager','English Brown Ale')
@@ -133,6 +134,7 @@ def malty():
 
 
 def dark():
+    from homePages import beerPage
     beerTable = beerDatabase()
 
     soft = ('Milk / Sweet Stout', 'Foreign / Export Stout', 'Schwarzbier', 'Baltic Porter', 'Oatmeal Stout', 'American Porter', 'American Pale Ale (APA)', 'American Brown Ale', ' English Stout','Winter Warmer', 'Dubbel')
@@ -167,14 +169,15 @@ def dark():
 
 
 def smoke():
+    from homePages import beerPage
     beerTable = beerDatabase()
 
     smolder = tuple('Smoked Beer')
     meaty = tuple('Rauchbier')
 
-    print("\033[1;35;49m----------------------------")
+    print("\033[1;35;49m---------------------")
     print("--- \U0001F37A \033[1;37;49m Smokey \U0001F37A \033[1;35;49m---")
-    print("----------------------------")
+    print("---------------------")
     print("\033[0;32;49mClick 'b' to choose a different flavor profile")
     print("\033[0;36;49mWhat are you in the mood for?")
     print("1) Subdued Smolder \n2) Spicy & Meaty")
@@ -201,6 +204,7 @@ def smoke():
 
 
 def fruity():
+    from homePages import beerPage
     beerTable = beerDatabase()
 
     bright = ('Saison / Farmhouse Ale', 'Roggenbier', 'Hefeweizen','American Pale Wheat Ale','Herbed / Spiced Beer', 'English Pale Mild Ale',  'Kristalweizen', 'Witbier','Pumpkin Ale', 'Belgian Blonde Ale', 'Tripel')
@@ -235,15 +239,16 @@ def fruity():
 
 
 def sour():
+    from homePages import beerPage
     beerTable = beerDatabase()
 
     delicate = ('Gose','Berliner Weissbier')
     fruity = ('Flanders Red Ale','Flanders Oud Bruin','Fruit / Vegetable Beer')
     earthy = tuple('American Wild Ale')
 
-    print("\033[1;35;49m----------------------------")
+    print("\033[1;35;49m----------------------------------")
     print("--- \U0001F37A \033[1;37;49m Sour, Tart, & Funky \U0001F37A \033[1;35;49m---")
-    print("----------------------------")
+    print("----------------------------------")
     print("\033[0;32;49mClick 'b' to choose a different flavor profile")
     print("\033[0;36;49mWhat are you in the mood for?")
     print("1) Delicate \n2) Fruity & Vinous \n3) Earthy")
