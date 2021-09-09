@@ -15,6 +15,7 @@ def beerDatabase():
     dropData = rawData.drop(columns=['ibu', 'ounces','brewery_id'])
     filterData = dropData.iloc[:, 1:]
     beers = pd.DataFrame(filterData)
+    beers['abv'] = 100 * beers['abv']
 
     # Translate dataframe to sql table
     beerTable = beers.to_sql('beerTable', con, if_exists='replace',index=True)
