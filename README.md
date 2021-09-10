@@ -23,6 +23,9 @@ Capstone project for ZCW Data Engineering course.
 - If you choose to find new beers to try, the abv values are displayed in a simple bar graph that is created using matplotlib
 - The brewery data is extracted from an API and is narrowed down by city, which is then organized by state
 
+## Slide Deck
+https://docs.google.com/presentation/d/1SfWzNTYDcqy66RJLEwkhe5_czY1zkqW-nJIERG6G_l4/edit?usp=sharing
+
 
   
   
