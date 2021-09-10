@@ -43,7 +43,7 @@ def crisp():
 
     choice = input('')
     if choice == '1':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(fruit)))
         fruitList = cur.execute(sql, fruit).fetchall()
         recs = pd.DataFrame.from_records(data=fruitList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -53,7 +53,7 @@ def crisp():
         time.sleep(2)
         crisp()
     elif choice == '2':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(malt)))
         maltList = cur.execute(sql, malt).fetchall()
         recs = pd.DataFrame.from_records(data=maltList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -63,7 +63,7 @@ def crisp():
         time.sleep(2)
         crisp()
     elif choice == '3':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(hop)))
         hopList = cur.execute(sql, hop).fetchall()
         recs = pd.DataFrame.from_records(data=hopList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -95,7 +95,7 @@ def hoppy():
 
     choice = input('')
     if choice == '1':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(earth)))
         earthList = cur.execute(sql, earth).fetchall()
         recs = pd.DataFrame.from_records(data=earthList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -105,7 +105,7 @@ def hoppy():
         time.sleep(2)
         hoppy()
     elif choice == '2':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(malt)))
         maltList = cur.execute(sql, malt).fetchall()
         recs = pd.DataFrame.from_records(data=maltList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -138,7 +138,7 @@ def malty():
 
     choice = input('')
     if choice == '1':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(toasty)))
         toastList = cur.execute(sql, toasty).fetchall()
         recs = pd.DataFrame.from_records(data=toastList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -147,7 +147,7 @@ def malty():
         time.sleep(2)
         malty()
     elif choice == '2':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(fruity)))
         fruitList = cur.execute(sql, fruity).fetchall()
         recs = pd.DataFrame.from_records(data=fruitList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -180,7 +180,7 @@ def dark():
 
     choice = input('')
     if choice == '1':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(soft)))
         softList = cur.execute(sql, soft).fetchall()
         recs = pd.DataFrame.from_records(data=softList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -190,7 +190,7 @@ def dark():
         time.sleep(2)
         dark()
     elif choice == '2':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(dry)))
         dryList = cur.execute(sql, dry).fetchall()
         recs = pd.DataFrame.from_records(data=dryList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -223,7 +223,7 @@ def smoke():
     if choice == 'b':
         beerPage()
     elif choice == '1':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(smokey)))
         meatyList = cur.execute(sql, smokey).fetchall()
         recs = pd.DataFrame.from_records(data=meatyList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -254,7 +254,7 @@ def fruity():
 
     choice = input('')
     if choice == '1':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(bright)))
         brightList = cur.execute(sql, bright).fetchall()
         recs = pd.DataFrame.from_records(data=brightList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -264,7 +264,7 @@ def fruity():
         time.sleep(2)
         fruity()
     elif choice == '2':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(dark)))
         darkList = cur.execute(sql, dark).fetchall()
         recs = pd.DataFrame.from_records(data=darkList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -297,7 +297,7 @@ def sour():
 
     choice = input('')
     if choice == '1':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(delicate)))
         delicateList = cur.execute(sql, delicate).fetchall()
         recs = pd.DataFrame.from_records(data=delicateList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
@@ -307,7 +307,7 @@ def sour():
         time.sleep(2)
         sour()
     elif choice == '2':
-        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'
+        sql = 'SELECT name, style, abv FROM beerTable WHERE style IN ({seq}) ORDER BY RANDOM() LIMIT 5'.format(seq=','.join(['?']*len(fruity)))
         fruityList = cur.execute(sql, fruity).fetchall()
         recs = pd.DataFrame.from_records(data=fruityList, columns=['Name','Style','ABV'])
         print("\033[0;33;49mTry one of these!:")
